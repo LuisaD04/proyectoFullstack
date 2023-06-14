@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <title>Galeria</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="/">
+                <img class="logo-menu" src="{% static '/img/logo-menu.webp' %}">
+                <span class="name-logo">Recorriendo Naturaleza </span></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/portafolio/"><i
+                                class="fa-brands fa-envira"></i>Portafolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/galeria/"><i class="fa-brands fa-envira"></i>Galeria</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- end navbar -->
+
+    <div class="content-page">
+
+        <div class="description-info">
+            <strong class="title-content">Galeria</strong>
+            <p class="subtitle">
+                Queremos mostrarles un poco sobre nuestro trabajo, sabemos que tambien debemos tener en cuenta la fauna
+                y flora que habita en estos ambientes es por esto que les damos conocer algunos de los animales que nos
+                hemos encontrado en este recorrido, motivo tambien por el cual seguimos trabajando porque en varios
+                ocasiones los hemos visto siendo victimas de esta gran contaminación.
+            </p>
+        </div>
+
+        <!-- acoordion -->
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Flora
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Contamos con una diversidad de más de 300.000 especies de plantas en el mundo.</strong>
+                        En el caso de colombia se arca aproximadamente un 13% de las especies cerca de 40.000 diferentes
+                        plantas. Colombia cuenta con 1.500 especies de plantas endémicas, siendo el primer país en el
+                        mundo con mayor variedad de orquídeas; y el tercero con mayor variedad de palmas.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Fauna
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>Colombia, el segundo país con mayor biodiversidad en el mundo —con 54.870 especies entre
+                            animales vertebrados, invertebrados, plantas y vegetales.</strong> La fauna es el término
+                        que se utiliza para designar al conjunto de especies animales que pueblan una región geográfica
+                        determinada y que llegaron a allí como consecuencia de uno de los varios períodos geológicos que
+                        se produjeron a lo largo de historia del planeta tierra.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end acoordion -->
+
+        <div class="description-info">
+            <strong class="title-content">La variedad de la naturaleza</strong>
+            <p class="subtitle">
+                Tenemos infinidad de ambitos en los que podemos apoyar pero en este caso hemos decidido mostarles los
+                cambios que hemos generado y como se encuentran actualmente muchos de estos sitios en los que hemos
+                trabajo subdiviendolos en tres gandres grupos como son los rios y oceanos, parques naturales y zonas
+                ecologicas, ambitos que no deben de ser dejados de visitar por la contaminación, es por esto que hacemos
+                lo posible para preservar y seguir contando con esta gran diversidad de lugares además de la flora y
+                fauna que traen consigo.
+            </p>
+        </div>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <div class="col-12 col-md-4 col-lg-6 offset-lg-3 form-proyecto form-galeria">
+            <div class="content-form">
+                <p> Registra un nuevo contenido</p>
+                <form action="/registrarCategorias/" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <!-- <div class="form-group">
+                        <input type="text" id="txtnombreProyecto" name="txtidProyecto"
+                            class="form-control" placeholder="Nombre" minlength="9" maxlength="11" required hidden>
+                    </div> -->
+                    <div class="form-group">
+                        <select id="txtnombreCategoria" name="txtnombreCategoria" required>
+                            <option selected>Seleccione una opción</option>
+                            <option value="nature">Rios y oceanos</option>
+                            <option value="cars"> Parques verdes</option>
+                            <option value="people"> Zonas ecologicas</option>
+                        </select>
+                        <!-- <input type="text" id="txtnombreCategoria" name="txtnombreCategoria" class="form-control"
+                            placeholder="Nombre" maxlength="50" required> -->
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtnombreContenido" name="txtnombreContenido" class="form-control"
+                            placeholder="Nombre" maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea type="textarea" id="txtdescripcionContenido" name="txtdescripcionContenido"
+                            class="form-control" placeholder="Descripción" maxlength="300" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="file" id="txtimagenContenido" name="txtimagenContenido" class="form-control"
+                            placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- MAIN (Center website) -->
+        <div class="content-gallery">
+
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Todo</button>
+                <button class="btn" onclick="filterSelection('nature')"> Rios y oceanos</button>
+                <button class="btn" onclick="filterSelection('cars')"> Parques verdes</button>
+                <button class="btn" onclick="filterSelection('people')"> Zonas ecologicas</button>
+            </div>
+
+            <!-- Portfolio Gallery Grid -->
+            <div class="row">
+
+                {% for item in categorias %}
+
+                <div class="column col-12 col-md-4 card-options {{item.nombreCategoria}}">
+                    <div class="content">
+                        <div class="categoria-image">
+                            <img src="http://127.0.0.1:3000/media/{{item.imagenContenido}}" alt="" style="width:100%">
+                            <div class="content-buttons">
+                                <a href="edicionCategorias/{{item.idCategoria}}" class="btn btn-info"><i
+                                        class="fa-solid fa-pencil"></i></a>
+                                <a href="eliminarCategorias/{{item.idCategoria}}" class="btn btnEliminacion"><i
+                                        class="fa-solid fa-trash-can"></i></a>
+                            </div>
+                        </div>
+                        <h4>{{item.nombreContenido}}</h4>
+                        <p>{{item.descripciónContenido}}</p>
+                    </div>
+                </div>
+
+                {% endfor %}
+
+                <!-- END GRID -->
+            </div>
+
+            <!-- END MAIN -->
+        </div>
+
+        <script>
+            filterSelection("all")
+            function filterSelection(c) {
+                var x, i;
+                x = document.getElementsByClassName("column col-12 col-md-4 card-options");
+                if (c == "all") c = "";
+                for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                }
+            }
+
+            function w3AddClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+                }
+            }
+
+            function w3RemoveClass(element, name) {
+                var i, arr1, arr2;
+                arr1 = element.className.split(" ");
+                arr2 = name.split(" ");
+                for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) {
+                        arr1.splice(arr1.indexOf(arr2[i]), 1);
+                    }
+                }
+                element.className = arr1.join(" ");
+            }
+
+
+            // Add active class to the current button (highlight it)
+            var btnContainer = document.getElementById("myBtnContainer");
+            var btns = btnContainer.getElementsByClassName("btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        </script>
+    </div>
+
+    <footer class=" text-center text-white" style="background-color: #6e979c;">
+        <div class="container p-4" style="background-color: #6e979c;">
+            <p>El infinito apoyo por la naturaleza</p>
+            <section>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: #4d7d8c;">© 2023 Copyright | Luisa Diaz</div>
+    </footer>
+
+</body>
+
+</html>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://kit.fontawesome.com/12c6e72ad4.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/gestionForm.js' %}"></script>

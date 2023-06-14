@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Editar proyecto</title>
+</head>
+
+<body>
+
+      <!-- Navbar -->
+
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a href="/">
+            <img class="logo-menu" src="{% static '/img/logo-menu.webp' %}">
+            <span class="name-logo">Recorriendo Naturaleza </span></a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="portafolio/"><i
+                                class="fa-brands fa-envira"></i>Portafolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="galeria/"><i class="fa-brands fa-envira"></i>Galeria</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- end navbar -->
+
+
+    <div class="row content-edit">
+        <div class="">
+            <h2>Editar infomación voluntario</h2>
+            <div class="card">
+                <div class="card-body">
+                    <form action="/editarVoluntarios/" method="POST">{% csrf_token %}
+                        <div class="form-group">
+                            <input type="number" id="txtcedulaVoluntario" name="txtcedulaVoluntario"
+                                value="{{voluntarios.cedulaVoluntario}}" class="form-control" placeholder="Cedula"
+                                minlength="9" maxlength="11" required hide>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtnombreVoluntario" name="txtnombreVoluntario"
+                                value="{{voluntarios.nombreVoluntario}}" class="form-control" placeholder="Nombre"
+                                maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtapellidoVoluntario" name="txtapellidoVoluntario"
+                                value="{{voluntarios.apellidoVoluntario}}" class="form-control" placeholder="Apellido"
+                                maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" id="txtedadVoluntario" name="txtedadVoluntario"
+                                value="{{voluntarios.edadVoluntario}}" class="form-control" placeholder="Edad"
+                                minlength="1" maxlength="6" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtcorreoVoluntario" name="txtcorreoVoluntario"
+                                value="{{voluntarios.correoVoluntario}}" class="form-control" placeholder="Correo"
+                                maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="txtciudadVoluntario" name="txtciudadVoluntario"
+                                value="{{voluntarios.ciudadVoluntario}}" class="form-control" placeholder="Ciudad"
+                                maxlength="50" required>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

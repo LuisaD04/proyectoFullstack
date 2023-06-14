@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.2/assets/css/docs.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>La Naturaleza</title>
+</head>
+
+<body class="p-0 m-0 border-0">
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <img class="logo-menu" src="{% static '/img/logo-menu.webp' %}">
+                <span class="name-logo">Recorriendo Naturaleza </span>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/portafolio/"><i
+                                class="fa-brands fa-envira"></i> Portafolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/galeria/"><i class="fa-brands fa-envira"></i> Galeria</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- slider banner -->
+
+    <div class="banner-home">
+
+        <swiper-container style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="banner-home"
+            speed="600" autoplay="true" loop="true" parallax="true" pagination="true" pagination-clickable="true"
+            navigation="true">
+            <div slot="container-start" class="parallax-bg" data-swiper-parallax="-23%"></div>
+
+            <swiper-slide class="slide-home">
+                <div class="title" data-swiper-parallax="-300">La Naturaleza</div>
+                <div class="subtitle" data-swiper-parallax="-200">Nuestra prioridad</div>
+                <div class="text" data-swiper-parallax="-100">
+                    <p>
+                        Valoramos el trabajo que cada uno hace por la naturaleza y lo fortalecemos para que sea más
+                        el apoyo que se vea en los cambios que se realizan dia a dia.
+
+                    </p>
+                </div>
+            </swiper-slide>
+            <swiper-slide class="slide-home">
+                <div class="title" data-swiper-parallax="-300">El apoyo al ambiente</div>
+                <div class="subtitle" data-swiper-parallax="-200">Nuestra responsabilidad</div>
+                <div class="text" data-swiper-parallax="-100">
+                    <p>
+                        Estamos comprometidos con el medio ambiente, trabajamos por la protección de la flora y fauna, y
+                        junto con el apoyo de la ciudania logramos abarcas más espacios ecologicos.
+
+                    </p>
+                </div>
+            </swiper-slide>
+        </swiper-container>
+
+    </div>
+    <!-- end slide-banner -->
+
+    <!-- End Nabvar -->
+
+    <div class="content-page">
+
+        <!-- content info -->
+        <div class="description-info">
+            <p>
+                Los recursos naturales proporcionan existencia para miles de millones de personas. Con recursos
+                naturales renovables, las piscinas hidrográficas, los paisajes de tierra productivos y los paisajes
+                marítimos pueden ser la base del crecimiento sostenible e inclusivo, la seguridad alimentaria, la
+                reducción de la pobreza y el pozo humano. Para lograr un crecimiento sostenible, la mejor gestión de los
+                recursos naturales, la política fiscal que respeta el medio ambiente, los mercados financieros más
+                ecológicos y los programas efectivos de gestión de residuos en todo el mundo.
+            </p>
+            <br>
+            <strong class="title-content">Nuestro equipo</strong>
+            <p class="subtitle">
+
+                En este espacio podra ver las personas que hacen parte de este proyecto, si ha sido contactado por
+                nuevas personas y estas cuentas con los requisitos por favor registrelas en el formulario a
+                continuación.
+            </p>
+        </div>
+        <!-- end info -->
+
+        <div class="content-row row">
+
+            <!-- content slider -->
+
+            <div class="content-slider col-12 col-md-3">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong class="text-dark">{{ message }}</strong>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card">
+                    <div class="card-body">
+                        <h2>Registro</h2>
+                        <form action="/registrarVoluntarios/" method="POST">{% csrf_token %}
+                            <div class="form-group">
+                                <input type="number" id="txtcedulaVoluntario" name="txtcedulaVoluntario"
+                                    class="form-control" placeholder="Cedula" minlength="9" maxlength="11" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="txtnombreVoluntario" name="txtnombreVoluntario"
+                                    class="form-control" placeholder="Nombre" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="txtapellidoVoluntario" name="txtapellidoVoluntario"
+                                    class="form-control" placeholder="Apellido" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="txtedadVoluntario" name="txtedadVoluntario"
+                                    class="form-control" placeholder="Edad" minlength="1" maxlength="6" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="txtcorreoVoluntario" name="txtcorreoVoluntario"
+                                    class="form-control" placeholder="Correo" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="txtciudadVoluntario" name="txtciudadVoluntario"
+                                    class="form-control" placeholder="Ciudad" maxlength="50" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- end slider -->
+            <!-- tabla con pagination -->
+            <div class="content-table col-12 col-md-9">
+                <div class="">
+                    <table cellpadding="1" cellspacing="1" class="table table-hover" id="myTable">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Edad</th>
+                                <th>Correo</th>
+                                <th>Ciudad</th>
+                                <th colspan="2">Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in voluntarios %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{item.nombreVoluntario}}</td>
+                                <td>{{item.apellidoVoluntario}}</td>
+                                <td>{{item.edadVoluntario}}</td>
+                                <td>{{item.correoVoluntario}}</td>
+                                <td>{{item.ciudadVoluntario}}</td>
+                                <td><a href="edicionVoluntarios/{{item.cedulaVoluntario}}"
+                                        class="btn btn-info">Editar</a></td>
+                                <td><a href="eliminarVoluntarios/{{item.cedulaVoluntario}}"
+                                        class="btn btnEliminacion">Eliminar</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <div class="col-md-12 center text-center">
+                        <ul class="pagination pager" id="pagination"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- end tabla -->
+
+
+        </div>
+
+    </div>
+    <footer class=" text-center text-white" style="background-color: #6e979c;">
+        <div class="container p-4" style="background-color: #6e979c;">
+            <p>El infinito apoyo por la naturaleza</p>
+            <section>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-twitter"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-google"></i></a>
+                <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </section>
+        </div>
+        <div class="text-center p-3" style="background-color: #4d7d8c;">© 2023 Copyright | Luisa Diaz</div>
+    </footer>
+
+</body>
+
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+<script src="https://cdn.rawgit.com/Dogfalo/materialize/fc44c862/dist/js/materialize.min.js"></script>
+<script src="https://kit.fontawesome.com/12c6e72ad4.js" crossorigin="anonymous"></script>
+<script type="text/javascript"
+    src="https://cdn.rawgit.com/pinzon1992/materialize_table_pagination/f9a8478f/js/pagination.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="{% static 'js/index.js' %}"></script>
+<script src="{% static 'js/gestionForm.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
